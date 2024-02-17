@@ -349,14 +349,115 @@ numbers.push_back(10);                    // Add an element to the end
 names.insert(names.begin() + 1, "Emily"); // Insert an element at position 1
 numbers.erase(numbers.begin() + 2);       // Remove element at position 2
 
-//TREE
+// TREE
 /*
 Types of trees:
 - Binary Tree: Each node has two childs (left & right)
-- Bianry Search Tree (BST): Same than previous, but the value of left leaf is lower than the parent, and the right one is greater than the parent 
+- Bianry Search Tree (BST): Same than previous, but the value of left leaf is lower than the parent, and the right one is greater than the parent
 - AVL Tree: BST that is self-balancing, and mantains a specific height.
 - Red-Black Tree: BST that  uses color coding to enforce balance properties.
 - N-ary Tree: Each node have more than two child nodes
 */
 
-//GRAPHS
+// STACK
+// First In First Out
+stack<int> myStack;
+
+myStack.push(10);
+myStack.push(20);
+myStack.push(30);
+
+int top = myStack.top(); // 30
+myStack.pop();           // Remove the top element (30)
+
+// Check if the stack is empty
+if (myStack.empty())
+    cout << "Stack is empty!";
+
+// QUEUES
+// First In Last Out
+queue<int> myQueue;
+
+// Enqueue elements
+myQueue.push(10);
+myQueue.push(20);
+myQueue.push(30);
+
+int front = myQueue.front(); // 10
+myQueue.pop();               // Erase 10
+
+// Check if the queue is empty
+if (myQueue.empty())
+    cout << "Queue is empty!";
+
+// HEAP (Binary Tree)
+// It can be MIN-HEAP or MAX-HEAP
+// Operations: push, pop, top, empty
+
+// MAX-HEAP
+// Root has the highest value
+priority_queue<int> myHeap;
+
+// Push elements onto the heap
+myHeap.push(10);
+myHeap.push(30);
+myHeap.push(20);
+
+// Access the top element (30)
+int top = myHeap.top();
+
+// Remove the top element (30)
+myHeap.pop();
+
+// Check if the heap is empty
+if (myHeap.empty())
+    cout << "Heap is empty!";
+
+// MIN-HEAP
+// Root has the lowest value
+struct compare
+{
+    bool operator()(int a, int b)
+    {
+        return a > b; // Reverse order for Min Heap
+    }
+};
+
+// Create a Min Heap using custom comparator
+std::priority_queue<int, std::vector<int>, compare> myHeap;
+
+// Push elements
+myHeap.push(10);
+myHeap.push(30);
+myHeap.push(20);
+
+// Access the top element (10)
+int top = myHeap.top();
+
+// Remove the top element (10)
+myHeap.pop();
+
+// RECURSION
+/*
+Recursion is a programming technique where a function calls itself directly or indirectly.
+
+Here's a breakdown of how recursion works in C++:
+- Base Case:
+    Condition that stops the recursion and provides a direct solution to the problem.
+
+- Recursive Case:
+    The function calls itself with a different input. 
+    This new input should be closer to the base case.
+
+- Stack and Call Stack:
+    When a function calls itself, a new instance of the function is created on the call stack. 
+    This new instance has its own local variables and parameters.
+    The call stack keeps track of all active function calls, and each call is returned to when its recursive case finishes.
+*/
+int factorial(int n) {
+  if (n == 0) { // Base case: 0! = 1
+    return 1;
+  } else { // Recursive case: n! = n * (n-1)!
+    return n * factorial(n - 1);
+  }
+}
